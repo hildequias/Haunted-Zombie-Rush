@@ -1,15 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Assertions;
 
 public class Player : MonoBehaviour {
 
 	[SerializeField] private float jumpForce = 100f;
 	[SerializeField] private AudioClip sfxJump;
+    [SerializeField] private AudioClip sfxDeath;
 
 	private Animator anim;
 	private Rigidbody rigidBody;
 	private bool jump = false;
 	private AudioSource audioSource;
+
+    void Awake() {
+        Assert.IsNotNull(sfxJump);
+        Assert.IsNotNull(sfxDeath);
+    }
 
 	// Use this for initialization
 	void Start () {
