@@ -46,4 +46,14 @@ public class Player : MonoBehaviour {
 			rigidBody.AddForce (new Vector2 (0,jumpForce), ForceMode.Impulse);
 		}
 	}
+
+    void OnCollisionEnter(Collision collision) {
+
+        if(collision.gameObject.tag == "obstacle") {
+
+            rigidBody.AddForce(new Vector2(-50, 20), ForceMode.Impulse);
+            rigidBody.detectCollisions = false;
+            audioSource.PlayOneShot(sfxDeath);
+        }
+    }
 }
